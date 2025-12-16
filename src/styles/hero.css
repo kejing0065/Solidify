@@ -1,0 +1,246 @@
+.hero {
+  background: linear-gradient(135deg, #f0f4f8 0%, #e6f2ff 100%);
+  padding: 6rem 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.hero-shape {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.shape-1 {
+  width: 300px;
+  height: 300px;
+  background: rgba(0, 102, 204, 0.1);
+  top: -100px;
+  right: -100px;
+}
+
+.shape-2 {
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 107, 53, 0.1);
+  bottom: 100px;
+  left: 50px;
+}
+
+.shape-3 {
+  width: 150px;
+  height: 150px;
+  background: rgba(0, 212, 255, 0.1);
+  top: 50%;
+  left: 20%;
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+  line-height: 1.2;
+}
+
+.hero-title .highlight {
+  color: var(--primary-color);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.hero-buttons a {
+  display: inline-block;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.stat {
+  text-align: left;
+}
+
+.stat h3 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.stat p {
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+/* Printer Illustration */
+.hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: slideInRight 0.8s ease-out;
+}
+
+.printer-illustration {
+  width: 100%;
+  max-width: 400px;
+}
+
+.printer-frame {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 20px 60px rgba(0, 102, 204, 0.15);
+  position: relative;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.printer-top {
+  background: linear-gradient(135deg, #0066cc, #00d4ff);
+  border-radius: 10px;
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+.printer-middle {
+  background: repeating-linear-gradient(
+    90deg,
+    #f0f0f0,
+    #f0f0f0 10px,
+    #e0e0e0 10px,
+    #e0e0e0 20px
+  );
+  border-radius: 8px;
+  height: 200px;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.printer-bottom {
+  background: linear-gradient(135deg, #ff6b35, #ff8a5b);
+  border-radius: 8px;
+  height: 40px;
+}
+
+.print-output {
+  position: absolute;
+  bottom: -20px;
+  right: 20px;
+  width: 30px;
+  height: 50px;
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  animation: slide-down 2s infinite;
+}
+
+@keyframes slide-down {
+  0% {
+    bottom: 20px;
+    opacity: 1;
+  }
+  100% {
+    bottom: -50px;
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 968px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-buttons {
+    flex-wrap: wrap;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .stat h3 {
+    font-size: 1.5rem;
+  }
+
+  .stat p {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 3rem 0;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .hero-buttons a {
+    width: 100%;
+  }
+
+  .hero-buttons button {
+    width: 100%;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+}
