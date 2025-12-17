@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 // 记得 install react-icons: npm install react-icons
 import { FaInstagram, FaFacebook, FaTwitter, FaLinkedin, FaCube } from 'react-icons/fa' 
+import logoImg from '../../logo.jpeg'
 
 function Footer() {
   return (
@@ -15,7 +16,12 @@ function Footer() {
           {/* 1. Brand Section */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2 group w-fit">
-              <FaCube className="text-2xl text-sky-500 group-hover:rotate-180 transition-transform duration-700" />
+              {/* <FaCube className="text-2xl text-sky-500 group-hover:rotate-180 transition-transform duration-700" /> */}
+              <img 
+                  src={logoImg} 
+                  alt="Solidify Logo" 
+                  className="h-10 w-auto object-contain" // h-10 是高度，自己调 (h-8, h-10, h-12)
+              />
               <span className="text-xl font-bold tracking-widest text-white uppercase group-hover:text-sky-400 transition-colors">
                 Solidify
               </span>
