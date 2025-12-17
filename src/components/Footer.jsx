@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/footer.css'
+import { FaInstagram } from 'react-icons/fa'
 
 function Footer() {
   return (
@@ -14,7 +15,7 @@ function Footer() {
               <a href="#" aria-label="Facebook">f</a>
               <a href="#" aria-label="Twitter">𝕏</a>
               <a href="#" aria-label="LinkedIn">in</a>
-              <a href="https://www.instagram.com/solidify_3dshop/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">📷</a>
+              <a href="https://www.instagram.com/solidify_3dshop/" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><FaInstagram size={30} /></a>
             </div>
           </div>
 

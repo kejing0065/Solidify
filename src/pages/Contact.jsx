@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import '../styles/contact.css'
+import { FaInstagram } from 'react-icons/fa'
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -54,34 +55,38 @@ function Contact() {
         <div className="container">
           <div className="contact-grid">
             <div className="contact-info">
-              <div className="info-section">
+              {/* <div className="info-section">
                 <h3>📍 Office Location</h3>
                 <p>123 Innovation Avenue</p>
                 <p>Tech City, TC 12345</p>
                 <p>United States</p>
-              </div>
+              </div> */}
 
               <div className="info-section">
                 <h3>📞 Contact Information</h3>
-                <p>Phone: <a href="tel:+15551234567">+1 (555) 123-4567</a></p>
-                <p>Email: <a href="mailto:info@solidify.com">info@solidify.com</a></p>
-                <p>Support: <a href="mailto:support@solidify.com">support@solidify.com</a></p>
+                {/* <p>Phone: <a href="tel:+15551234567">+1 (555) 123-4567</a></p> */}
+                <p>Email: <a href="solidify123d@gmail.com">solidify123d@gmail.com</a></p>
               </div>
 
               <div className="info-section">
                 <h3>⏰ Business Hours</h3>
-                <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
-                <p>Saturday: 10:00 AM - 4:00 PM</p>
-                <p>Sunday: Closed</p>
+                <p>Monday - Friday: 10:00 AM - 5:00 PM</p>
+                <p>Sunday & Saturday: 11:00 AM - 2:00 PM</p>
               </div>
 
               <div className="info-section">
                 <h3>🌐 Follow Us</h3>
                 <div className="social-links">
-                  <a href="#facebook">Facebook</a>
+                  {/* <a href="#facebook">Facebook</a>
                   <a href="#twitter">Twitter</a>
-                  <a href="#linkedin">LinkedIn</a>
-                  <a href="#instagram">Instagram</a>
+                  <a href="#linkedin">LinkedIn</a> */}
+                  <a
+                    href="https://www.instagram.com/solidify_3dshop/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >
+                      <FaInstagram />
+                    </a>
                 </div>
               </div>
             </div>
