@@ -1,82 +1,73 @@
 import React from 'react'
-import { Zap, Target, Layers, DollarSign, Users, ShieldCheck } from 'lucide-react'
+import { Zap, Crosshair, Package, DollarSign, Users, Trophy } from 'lucide-react'
 import '../styles/features.css'
 
 function FeaturesSection() {
   const features = [
     {
       id: 1,
-      icon: <Zap className="w-8 h-8 text-yellow-400" />, 
-      title: 'Fast Turnaround',
-      description: 'Get your prototypes in as little as 24 hours. Speed is our game.'
+      icon: <Zap className="w-8 h-8" />,
+      title: 'Lightning Fast',
+      description: 'Get prototypes in 24-48 hours. Speed without compromise on quality.'
     },
     {
       id: 2,
-      icon: <Target className="w-8 h-8 text-red-400" />,
-      title: 'High Precision',
-      description: 'Tolerances up to ±0.1mm. Sharp until your eyes bleed.'
+      icon: <Crosshair className="w-8 h-8" />,
+      title: 'Precision Engineered',
+      description: 'Tolerances to ±0.1mm. Every detail matters, we get it right.'
     },
     {
       id: 3,
-      icon: <Layers className="w-8 h-8 text-blue-400" />,
-      title: 'Multiple Materials',
-      description: 'PLA, ABS, Resin, Nylon. You name it, we print it.'
+      icon: <Package className="w-8 h-8" />,
+      title: 'Any Material',
+      description: 'PLA, ABS, Resin, Nylon, Flexible TPU. Choose what works best.'
     },
     {
       id: 4,
-      icon: <DollarSign className="w-8 h-8 text-green-400" />,
-      title: 'Competitive Pricing',
-      description: 'Best bang for your buck. Volume discounts available.'
+      icon: <DollarSign className="w-8 h-8" />,
+      title: 'Best Value',
+      description: 'Competitive pricing with volume discounts. No hidden fees.'
     },
     {
       id: 5,
-      icon: <Users className="w-8 h-8 text-purple-400" />,
-      title: 'Expert Team',
-      description: 'Engineers who actually know what they are doing.'
+      icon: <Users className="w-8 h-8" />,
+      title: 'Expert Support',
+      description: 'Real engineers who care about your success. Always available.'
     },
     {
       id: 6,
-      icon: <ShieldCheck className="w-8 h-8 text-indigo-400" />,
-      title: 'Quality Guaranteed',
-      description: 'Checked manually. No defects allowed out the door.'
+      icon: <Trophy className="w-8 h-8" />,
+      title: 'Quality Assured',
+      description: 'Every print inspected manually. Zero defect guarantee.'
     }
   ]
 
   return (
-    <section className="features py-20 bg-white">
+    <section className="features py-20 md:py-32 section-light">
       <div className="container mx-auto px-4">
         
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-blue-700 font-bold tracking-wider uppercase text-sm">
-            Why Choose Us
-          </span>
-          <h2 className="section-title text-4xl font-extrabold mt-2 mb-4 text-gray-900">
-            Precision Meets Efficiency
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6">
+            Why Choose <span className="gradient-text">Solidify</span>
           </h2>
-          <p className="section-subtitle text-gray-600 text-lg font-medium">
-            We don't just print stuff; we engineer solutions.
+          <p className="text-xl text-slate-600 leading-relaxed">
+            We combine cutting-edge technology with expert craftsmanship to deliver exceptional 3D printing solutions for creators, engineers, and businesses.
           </p>
         </div>
 
-        <div className="features-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature) => (
-            <div 
-              key={feature.id} 
-              // ✨ 这里改了: 加了 flex flex-col items-center text-center
-              // items-center: 让 Icon 居中
-              // text-center: 让字也居中
-              className="feature-card group bg-gray-800 p-8 rounded-2xl flex flex-col items-center text-center hover:bg-gray-700 hover:shadow-xl transition-all duration-300 border border-gray-700 hover:border-gray-500 transform hover:-translate-y-1"
+            <div
+              key={feature.id}
+              className="card group hover:shadow-2xl hover:-translate-y-2"
             >
-              {/* Icon Container */}
-              <div className="feature-icon mb-6 bg-gray-700 w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-400 rounded-lg flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300">
                 {feature.icon}
               </div>
-              
-              <h3 className="text-xl font-bold mb-3 text-white">
+              <h3 className="text-xl font-bold text-slate-900 mb-3">
                 {feature.title}
               </h3>
-              
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-slate-600 leading-relaxed">
                 {feature.description}
               </p>
             </div>

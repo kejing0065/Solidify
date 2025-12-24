@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 function Portfolio() {
   const [activeCategory, setActiveCategory] = useState('All')
@@ -63,74 +64,78 @@ function Portfolio() {
   ]
 
   const categories = ['All', ...new Set(portfolioItems.map(item => item.category))]
-
-  // Logic: 简单的 Filter 功能
   const filteredItems = activeCategory === 'All' 
     ? portfolioItems 
     : portfolioItems.filter(item => item.category === activeCategory)
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 font-sans">
+    <div className="min-h-screen bg-white font-sans">
       
-      {/* 1. Hero Section */}
-      <section className="relative py-20 px-5 text-center bg-gradient-to-b from-slate-800 to-slate-900 border-b border-slate-800">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-sky-400 to-cyan-300 bg-clip-text text-transparent">
-            Our Portfolio
+      {/* Hero Section */}
+      <section className="relative py-20 md:py-32 px-4 overflow-hidden section-light">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-purple-400 to-transparent rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-pink-400 to-transparent rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+        </div>
+        
+        <div className="container mx-auto max-w-4xl relative z-10 text-center">
+          <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-6">
+            Our <span className="gradient-text">Portfolio</span>
           </h1>
-          <p className="text-slate-400 text-lg">
-            Showcase of successful 3D printing projects.
+          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            Explore our collection of successful 3D printing projects across various industries.
           </p>
         </div>
       </section>
 
-      {/* 2. Filter Tabs (我帮你加的功能) */}
-      <section className="pt-10 px-5">
-        <div className="container mx-auto flex flex-wrap justify-center gap-3">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300
-                ${activeCategory === cat 
-                  ? 'bg-sky-500 text-white shadow-[0_0_15px_rgba(14,165,233,0.4)] transform -translate-y-1' 
-                  : 'bg-slate-800 text-slate-400 border border-slate-700 hover:border-sky-500 hover:text-sky-400'
-                }
-              `}
-            >
-              {cat}
-            </button>
-          ))}
+      {/* Filter Tabs */}
+      <section className="py-12 px-4 bg-gradient-to-b from-slate-50 to-white">
+        <div className="container mx-auto">
+          <div className="flex flex-wrap justify-center gap-3">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
+                  activeCategory === cat 
+                    ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg' 
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* 3. Portfolio Grid */}
-      <section className="py-16 px-5">
+      {/* Portfolio Grid */}
+      <section className="py-20 px-4">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {filteredItems.map((item) => (
               <div 
                 key={item.id} 
-                className="group bg-slate-800 border border-slate-700 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-sky-500/10 transition-all duration-300 hover:-translate-y-2 flex flex-col"
+                className="card group overflow-hidden hover:shadow-2xl hover:-translate-y-3 flex flex-col"
               >
-                {/* Image Placeholder (Emoji Box) */}
-                <div className="h-48 w-full bg-slate-700/50 flex items-center justify-center text-7xl group-hover:scale-110 transition-transform duration-500">
+                {/* Image/Emoji */}
+                <div className="h-48 w-full bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-500">
                   {item.image}
                 </div>
 
                 {/* Content */}
                 <div className="p-6 flex flex-col flex-grow">
-                  <span className="text-xs font-bold text-sky-400 uppercase tracking-widest mb-2">
+                  <span className="text-xs font-bold text-purple-600 uppercase tracking-widest mb-2">
                     {item.category}
                   </span>
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-sky-300 transition-colors">
+                  <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-purple-600 transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-slate-400 text-sm mb-6 flex-grow">
+                  <p className="text-slate-600 text-sm mb-6 flex-grow">
                     {item.description}
                   </p>
                   
-                  <button className="w-full py-2 border border-slate-600 rounded-lg text-slate-300 text-sm font-semibold hover:bg-sky-500 hover:text-white hover:border-sky-500 transition-all">
+                  <button className="w-full py-2 border-2 border-slate-200 rounded-lg text-slate-700 text-sm font-semibold hover:border-purple-600 hover:text-purple-600 hover:bg-purple-50 transition-all">
                     View Details
                   </button>
                 </div>
@@ -138,7 +143,6 @@ function Portfolio() {
             ))}
           </div>
 
-          {/* Empty State (如果 Filter 找不到东西) */}
           {filteredItems.length === 0 && (
             <div className="text-center text-slate-500 py-20">
               No projects found in this category.
@@ -147,27 +151,38 @@ function Portfolio() {
         </div>
       </section>
 
-      {/* 4. Stats Section */}
-      <section className="py-20 bg-slate-950 border-t border-slate-800">
-        <div className="container mx-auto px-5">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-slate-800/50">
-            <div className="stat-item">
-              <h3 className="text-4xl md:text-5xl font-bold text-white mb-2">5000+</h3>
-              <p className="text-sky-400 text-sm uppercase tracking-widest font-semibold">Projects Completed</p>
+      {/* Stats Section */}
+      <section className="py-20 px-4 bg-gradient-to-r from-purple-600 to-pink-600">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+            <div>
+              <div className="text-4xl md:text-5xl font-black mb-2">5000+</div>
+              <p className="text-sm uppercase tracking-widest font-semibold opacity-90">Projects Completed</p>
             </div>
-            <div className="stat-item">
-              <h3 className="text-4xl md:text-5xl font-bold text-white mb-2">500+</h3>
-              <p className="text-sky-400 text-sm uppercase tracking-widest font-semibold">Happy Clients</p>
+            <div>
+              <div className="text-4xl md:text-5xl font-black mb-2">500+</div>
+              <p className="text-sm uppercase tracking-widest font-semibold opacity-90">Happy Clients</p>
             </div>
-            <div className="stat-item">
-              <h3 className="text-4xl md:text-5xl font-bold text-white mb-2">20+</h3>
-              <p className="text-sky-400 text-sm uppercase tracking-widest font-semibold">Industries Served</p>
+            <div>
+              <div className="text-4xl md:text-5xl font-black mb-2">20+</div>
+              <p className="text-sm uppercase tracking-widest font-semibold opacity-90">Industries Served</p>
             </div>
-            <div className="stat-item">
-              <h3 className="text-4xl md:text-5xl font-bold text-white mb-2">98%</h3>
-              <p className="text-sky-400 text-sm uppercase tracking-widest font-semibold">Client Satisfaction</p>
+            <div>
+              <div className="text-4xl md:text-5xl font-black mb-2">98%</div>
+              <p className="text-sm uppercase tracking-widest font-semibold opacity-90">Client Satisfaction</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto max-w-2xl text-center">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">Want to See Your Project Here?</h2>
+          <p className="text-slate-600 mb-8 text-lg">Get started with a free quote today</p>
+          <Link to="/contact?type=quote" className="btn-primary">
+            Get Free Quote Now
+          </Link>
         </div>
       </section>
     </div>

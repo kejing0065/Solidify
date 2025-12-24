@@ -5,19 +5,70 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 2. Global Base Styles (代替你以前的 body {}) */
+/* 2. Modern Color Scheme - Universal & Appealing */
 @layer base {
-  /* 这里我们直接用 Tailwind class 来设定 default */
-  
-  body {
-    /* bg-slate-900: 对应你原本的深色背景 --dark-bg (#0a1628 也是一种深蓝，Slate-900 很接近)
-       text-slate-100: 对应你的浅色字体
-       font-sans: 对应 Poppins (前提是你 index.html 有 link 字体，或者是 default sans)
-    */
-    @apply bg-slate-900 text-slate-100 font-sans antialiased;
+  :root {
+    /* Modern Gradient Colors - Appealing to all audiences */
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --accent-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --cool-gradient: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+    
+    /* Neutral & Professional */
+    --bg-dark: #0f172a;
+    --bg-light: #ffffff;
+    --text-dark: #0f172a;
+    --text-light: #f8fafc;
   }
 
-  /* 你的 Button Reset 也不需要了，Tailwind 自动帮你 reset 了 */
+  body {
+    @apply bg-white text-slate-900 font-sans antialiased;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom selections */
+  ::selection {
+    @apply bg-gradient-to-r from-purple-400 to-pink-400 text-white;
+  }
+}
+
+/* 3. Custom Components */
+@layer components {
+  /* Modern Button Styles */
+  .btn-primary {
+    @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    @apply text-white;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 rounded-lg font-semibold border-2 transition-all duration-300;
+    border-color: #667eea;
+    @apply text-purple-700 hover:bg-purple-50;
+  }
+
+  /* Card Styles */
+  .card {
+    @apply bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600;
+  }
+
+  /* Modern Section Background */
+  .section-light {
+    @apply bg-gradient-to-b from-white to-slate-50;
+  }
+
+  .section-dark {
+    @apply bg-gradient-to-b from-slate-900 to-slate-800 text-white;
+  }
 }
 
 /* 3. Custom Utilities (如果你真的有些奇怪的 class 还没改完，可以暂时放在这里，但建议尽量清空) */

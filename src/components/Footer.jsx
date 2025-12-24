@@ -1,44 +1,41 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-// 记得 install react-icons: npm install react-icons
-import { FaInstagram, FaFacebook, FaTwitter, FaLinkedin, FaCube } from 'react-icons/fa' 
+import { FaInstagram, FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa' 
 import logoImg from '../../logo.jpeg'
 
 function Footer() {
   return (
-    // bg-slate-950: 比正文的 bg-slate-900 更深一点，做出层次感
-    <footer className="bg-slate-950 border-t border-slate-800 pt-16 pb-8 text-slate-300 font-sans">
-      <div className="container mx-auto px-5">
+    <footer className="bg-gradient-to-b from-slate-900 to-slate-950 border-t border-slate-800 pt-20 pb-8 text-slate-400 font-sans">
+      <div className="container mx-auto px-4">
         
         {/* Top Section: Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           
           {/* 1. Brand Section */}
           <div className="space-y-4">
-            <Link to="/" className="flex items-center gap-2 group w-fit">
-              {/* <FaCube className="text-2xl text-sky-500 group-hover:rotate-180 transition-transform duration-700" /> */}
+            <Link to="/" className="flex items-center gap-3 group w-fit">
               <img 
-                  src={logoImg} 
-                  alt="Solidify Logo" 
-                  className="h-10 w-auto object-contain" // h-10 是高度，自己调 (h-8, h-10, h-12)
+                src={logoImg} 
+                alt="Solidify Logo" 
+                className="h-10 w-auto object-contain group-hover:scale-110 transition-transform duration-300" 
               />
-              <span className="text-xl font-bold tracking-widest text-white uppercase group-hover:text-sky-400 transition-colors">
+              <span className="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 transition-all">
                 Solidify
               </span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed">
-              Leading 3D printing service provider for businesses and individuals worldwide. Turning your digital dreams into physical reality.
+              Professional 3D printing services for creators, engineers, and businesses. Bringing your ideas to life with precision and passion.
             </p>
             
-            {/* Social Icons with Hover Effects */}
-            <div className="flex gap-3 pt-2">
-              <a href="#" aria-label="Facebook" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-[#1877F2] hover:text-white transition-all duration-300 hover:-translate-y-1">
+            {/* Social Icons */}
+            <div className="flex gap-3 pt-4">
+              <a href="#" aria-label="Facebook" className="w-10 h-10 rounded-lg bg-slate-800/50 flex items-center justify-center hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 text-slate-400 hover:text-white transition-all duration-300 hover:scale-110">
                 <FaFacebook size={18} />
               </a>
-              <a href="#" aria-label="Twitter" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300 hover:-translate-y-1">
+              <a href="#" aria-label="Twitter" className="w-10 h-10 rounded-lg bg-slate-800/50 flex items-center justify-center hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 text-slate-400 hover:text-white transition-all duration-300 hover:scale-110">
                 <FaTwitter size={18} />
               </a>
-              <a href="#" aria-label="LinkedIn" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-[#0A66C2] hover:text-white transition-all duration-300 hover:-translate-y-1">
+              <a href="#" aria-label="LinkedIn" className="w-10 h-10 rounded-lg bg-slate-800/50 flex items-center justify-center hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 text-slate-400 hover:text-white transition-all duration-300 hover:scale-110">
                 <FaLinkedin size={18} />
               </a>
               <a 
@@ -46,7 +43,7 @@ function Footer() {
                 target="_blank" 
                 rel="noopener noreferrer" 
                 aria-label="Instagram" 
-                className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] hover:text-white transition-all duration-300 hover:-translate-y-1"
+                className="w-10 h-10 rounded-lg bg-slate-800/50 flex items-center justify-center hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 text-slate-400 hover:text-white transition-all duration-300 hover:scale-110"
               >
                 <FaInstagram size={18} />
               </a>
@@ -55,55 +52,45 @@ function Footer() {
 
           {/* 2. Quick Links */}
           <div>
-            <h4 className="text-white font-bold mb-6 text-lg relative inline-block">
-              Quick Links
-              <span className="absolute -bottom-2 left-0 w-10 h-1 bg-sky-500 rounded-full"></span>
+            <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">
+              Navigation
             </h4>
             <div className="flex flex-col space-y-3 text-sm">
-              <Link to="/" className="hover:text-sky-400 hover:translate-x-1 transition-all duration-200 w-fit">Home</Link>
-              <Link to="/services" className="hover:text-sky-400 hover:translate-x-1 transition-all duration-200 w-fit">Material Guide</Link>
-              <Link to="/portfolio" className="hover:text-sky-400 hover:translate-x-1 transition-all duration-200 w-fit">Portfolio</Link>
-              <Link to="/pricing" className="hover:text-sky-400 hover:translate-x-1 transition-all duration-200 w-fit">Pricing</Link>
-              <Link to="/contact" className="hover:text-sky-400 hover:translate-x-1 transition-all duration-200 w-fit">Contact</Link>
+              <Link to="/" className="text-slate-400 hover:text-purple-400 hover:translate-x-1 transition-all duration-200">Home</Link>
+              <Link to="/services" className="text-slate-400 hover:text-purple-400 hover:translate-x-1 transition-all duration-200">Services</Link>
+              <Link to="/portfolio" className="text-slate-400 hover:text-purple-400 hover:translate-x-1 transition-all duration-200">Portfolio</Link>
+              <Link to="/contact" className="text-slate-400 hover:text-purple-400 hover:translate-x-1 transition-all duration-200">Contact</Link>
             </div>
           </div>
 
           {/* 3. Services */}
           <div>
-            <h4 className="text-white font-bold mb-6 text-lg relative inline-block">
+            <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">
               Services
-              <span className="absolute -bottom-2 left-0 w-10 h-1 bg-sky-500 rounded-full"></span>
             </h4>
             <div className="flex flex-col space-y-3 text-sm">
-              <a href="/contact?type=prototyping" className="hover:text-sky-400 hover:translate-x-1 transition-all duration-200 w-fit">Prototyping</a>
-              <a href="/contact?type=custom-parts" className="hover:text-sky-400 hover:translate-x-1 transition-all duration-200 w-fit">Custom Parts</a>
-              <a href="/contact?type=production" className="hover:text-sky-400 hover:translate-x-1 transition-all duration-200 w-fit">Production Runs</a>
-              <a href="/contact?type=consulting" className="hover:text-sky-400 hover:translate-x-1 transition-all duration-200 w-fit">Design Consulting</a>
+              <a href="/contact?type=quote" className="text-slate-400 hover:text-purple-400 hover:translate-x-1 transition-all duration-200">Get Quote</a>
+              <a href="/services" className="text-slate-400 hover:text-purple-400 hover:translate-x-1 transition-all duration-200">Prototyping</a>
+              <a href="/services" className="text-slate-400 hover:text-purple-400 hover:translate-x-1 transition-all duration-200">Custom Parts</a>
+              <a href="/services" className="text-slate-400 hover:text-purple-400 hover:translate-x-1 transition-all duration-200">Production Runs</a>
             </div>
           </div>
 
           {/* 4. Contact Info */}
           <div>
-            <h4 className="text-white font-bold mb-6 text-lg relative inline-block">
-              Contact Us
-              <span className="absolute -bottom-2 left-0 w-10 h-1 bg-sky-500 rounded-full"></span>
+            <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">
+              Contact
             </h4>
             <div className="space-y-4 text-sm">
-              <p className="flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-sky-500/10 flex items-center justify-center text-sky-400">
-                  📧
-                </span>
-                <a href="mailto:solidify123d@gmail.com" className="hover:text-sky-400 transition-colors">
+              <p>
+                <span className="text-slate-400">Email:</span><br/>
+                <a href="mailto:solidify123d@gmail.com" className="text-purple-400 hover:text-pink-400 transition-colors font-semibold">
                   solidify123d@gmail.com
                 </a>
               </p>
-              <p className="flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-sky-500/10 flex items-center justify-center text-sky-400">
-                  📍
-                </span>
-                <span className="text-slate-400">
-                  Penang, Malaysia
-                </span>
+              <p>
+                <span className="text-slate-400">Location:</span><br/>
+                <span className="text-slate-300">Penang, Malaysia</span>
               </p>
             </div>
           </div>

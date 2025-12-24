@@ -86,20 +86,24 @@ function Contact() {
       })
   }
 
-  // Input 的共用样式，不用一直重写
-  const inputClass = "w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-slate-100 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-all placeholder-slate-600"
-  const labelClass = "block text-sm font-semibold text-slate-400 mb-2"
+  // Input shared styles
+  const inputClass = "w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all placeholder-slate-400"
+  const labelClass = "block text-sm font-semibold text-slate-900 mb-2"
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 font-sans">
+    <div className="min-h-screen bg-white text-slate-900 font-sans">
       
       {/* 1. Hero Section */}
-      <section className="relative py-20 px-5 text-center bg-gradient-to-b from-slate-800 to-slate-900 border-b border-slate-800">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-sky-400 to-cyan-300 bg-clip-text text-transparent">
+      <section className="relative py-20 md:py-32 px-5 text-center section-light overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-purple-400 to-transparent rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-pink-400 to-transparent rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+        </div>
+        <div className="max-w-3xl mx-auto relative z-10">
+          <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-6">
             {isQuoteRequest ? 'Request A Quote' : 'Get In Touch'}
           </h1>
-          <p className="text-slate-400 text-lg">
+          <p className="text-lg text-slate-600">
             {isQuoteRequest 
               ? 'Tell us about your project and get a free quote within 24 hours.' 
               : 'Have a project in mind? Let\'s talk about how we can help.'}
@@ -113,71 +117,69 @@ function Contact() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             
             {/* --- Left Column: Contact Info --- */}
-            <div className="bg-slate-800/50 border border-slate-700 p-8 rounded-2xl h-fit">
-              <h3 className="text-2xl font-bold text-white mb-8 border-b border-slate-700 pb-4">
+            <div className="space-y-6">
+              <h3 className="text-2xl font-bold text-slate-900 mb-8">
                 Contact Information
               </h3>
 
-              <div className="space-y-8">
-                {/* Email */}
-                <div className="flex items-start gap-4">
-                  <div className="bg-sky-500/10 p-3 rounded-full text-sky-400">
-                    <FaEnvelope size={20} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-white">Email</h4>
-                    <a href="mailto:solidify123d@gmail.com" className="text-slate-400 hover:text-sky-400 transition-colors">
-                      solidify123d@gmail.com
-                    </a>
-                  </div>
+              {/* Email Card */}
+              <div className="card border border-slate-200 p-6 flex items-start gap-4 group hover:border-purple-300 transition-all">
+                <div className="bg-purple-100 p-3 rounded-full text-purple-600 group-hover:scale-110 transition-transform">
+                  <FaEnvelope size={24} />
                 </div>
-
-                {/* Hours */}
-                <div className="flex items-start gap-4">
-                  <div className="bg-sky-500/10 p-3 rounded-full text-sky-400">
-                    <FaClock size={20} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-white">Business Hours</h4>
-                    <p className="text-slate-400 text-sm">Mon - Fri: 10:00 AM - 5:00 PM</p>
-                    <p className="text-slate-400 text-sm">Sat - Sun: 11:00 AM - 2:00 PM</p>
-                  </div>
+                <div className="flex-1">
+                  <h4 className="font-bold text-slate-900 mb-1 text-lg">Email</h4>
+                  <a href="mailto:solidify123d@gmail.com" className="text-slate-600 hover:text-purple-600 transition-colors break-all text-base">
+                    solidify123d@gmail.com
+                  </a>
                 </div>
+              </div>
 
-                {/* Socials */}
-                <div className="flex items-start gap-4">
-                  <div className="bg-sky-500/10 p-3 rounded-full text-sky-400">
-                    <FaInstagram size={20} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-white">Follow Us</h4>
-                    <a 
-                      href="https://www.instagram.com/solidify_3dshop/" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-slate-400 hover:text-pink-500 transition-colors inline-flex items-center gap-2 mt-1"
-                    >
-                      @solidify_3dshop
-                    </a>
-                  </div>
+              {/* Hours Card */}
+              <div className="card border border-slate-200 p-6 flex items-start gap-4 group hover:border-purple-300 transition-all">
+                <div className="bg-purple-100 p-3 rounded-full text-purple-600 group-hover:scale-110 transition-transform">
+                  <FaClock size={24} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-slate-900 mb-2 text-lg">Business Hours</h4>
+                  <p className="text-slate-600 text-base">Mon - Fri: 10:00 AM - 5:00 PM</p>
+                  <p className="text-slate-600 text-base">Sat - Sun: 11:00 AM - 2:00 PM</p>
+                </div>
+              </div>
+
+              {/* Socials Card */}
+              <div className="card border border-slate-200 p-6 flex items-start gap-4 group hover:border-purple-300 transition-all">
+                <div className="bg-purple-100 p-3 rounded-full text-purple-600 group-hover:scale-110 transition-transform">
+                  <FaInstagram size={24} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-slate-900 mb-2 text-lg">Follow Us</h4>
+                  <a 
+                    href="https://www.instagram.com/solidify_3dshop/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-slate-600 hover:text-pink-600 transition-colors inline-flex items-center gap-2 text-base"
+                  >
+                    @solidify_3dshop
+                  </a>
                 </div>
               </div>
             </div>
 
             {/* --- Right Column: Form --- */}
-            <div className="bg-slate-800 border border-slate-700 p-8 rounded-2xl">
+            <div className="card border border-slate-200">
               {submitted ? (
-                <div className="h-full flex flex-col justify-center items-center text-center py-20 animate-fade-in">
-                  <div className="bg-emerald-500/20 p-4 rounded-full text-emerald-400 mb-4">
+                <div className="h-full flex flex-col justify-center items-center text-center py-20">
+                  <div className="bg-green-100 p-4 rounded-full text-green-600 mb-4">
                     <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
-                  <p className="text-slate-400">We'll get back to you within 24 hours.</p>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Message Sent!</h3>
+                  <p className="text-slate-600">We'll get back to you within 24 hours.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {error && (
-                    <div className="bg-red-500/20 border border-red-500/50 text-red-300 px-4 py-3 rounded-lg">
+                    <div className="bg-red-100 border border-red-300 text-red-800 px-4 py-3 rounded-lg">
                       {error}
                     </div>
                   )}
@@ -228,9 +230,9 @@ function Contact() {
                       <label htmlFor="file" className={labelClass}>Upload 3D Model (Optional)</label>
                       <div className="relative">
                         <input type="file" id="file" name="file" onChange={handleChange} accept=".stl,.obj,.step,.iges,.fbx,.gltf" className="hidden" />
-                        <label htmlFor="file" className={`${inputClass} flex items-center gap-3 cursor-pointer hover:border-sky-400 transition-colors`}>
-                          <FaFile className="text-sky-400" />
-                          <span className="text-slate-400">
+                        <label htmlFor="file" className={`${inputClass} flex items-center gap-3 cursor-pointer hover:border-purple-500 transition-colors`}>
+                          <FaFile className="text-purple-600" />
+                          <span className="text-slate-600">
                             {formData.file ? formData.file.name : 'Choose 3D model file (STL, OBJ, STEP, etc.)'}
                           </span>
                         </label>
@@ -239,7 +241,7 @@ function Contact() {
                     </div>
                   )}
 
-                  <button type="submit" className="w-full bg-sky-500 hover:bg-sky-400 text-white font-bold py-4 rounded-lg transition-all shadow-[0_0_20px_rgba(14,165,233,0.4)] hover:shadow-[0_0_30px_rgba(14,165,233,0.6)] hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed" disabled={isLoading}>
+                  <button type="submit" className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed" disabled={isLoading}>
                     {isLoading ? 'Sending...' : isQuoteRequest ? 'Request Quote' : 'Send Message'}
                   </button>
                 </form>
@@ -251,11 +253,11 @@ function Contact() {
       </section>
 
       {/* 3. Bottom CTA */}
-      <section className="py-16 px-5 bg-slate-950 border-t border-slate-800 text-center">
+      <section className="py-16 px-5 bg-gradient-to-r from-purple-600 to-pink-600 text-center">
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold text-white mb-4">Ready to Start Your Project?</h2>
-          <p className="text-slate-400 mb-8 max-w-xl mx-auto">Get a free quote today - no obligation, no hidden fees. Just upload your file and tell us what you need.</p>
-          <a href="/pricing" className="inline-block border-2 border-sky-500 text-sky-400 font-bold py-3 px-8 rounded-full hover:bg-sky-500 hover:text-white transition-all">
+          <p className="text-white/90 mb-8 max-w-xl mx-auto">Get a free quote today - no obligation, no hidden fees. Just upload your file and tell us what you need.</p>
+          <a href="/contact?type=quote" className="inline-block px-8 py-4 bg-white text-purple-700 font-bold rounded-lg hover:bg-yellow-300 transition-all hover:scale-105">
             Get Free Quote
           </a>
         </div>

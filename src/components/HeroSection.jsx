@@ -1,99 +1,73 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, PlayCircle, Layers, Clock, Smile } from 'lucide-react' // 记得 import 这些
+import { ArrowRight, Zap } from 'lucide-react'
 import '../styles/hero.css'
 
 function HeroSection() {
   return (
     <section className="hero relative overflow-hidden bg-white">
-      {/* Background Shapes - 这些保留，但是建议用 CSS Blur 弄成那种 glowing orb 的感觉 */}
-      <div className="hero-background absolute inset-0 pointer-events-none">
-        <div className="hero-shape shape-1 opacity-20"></div>
-        <div className="hero-shape shape-2 opacity-20"></div>
+      {/* Animated Background Shapes */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-purple-400 to-transparent rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-pink-400 to-transparent rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{animationDelay: '1s'}}></div>
       </div>
-      
-      <div className="container mx-auto px-4 py-20 md:py-32 flex flex-col-reverse md:flex-row items-center gap-12">
-        
-        {/* Left Content: The Sales Pitch */}
-        <div className="hero-content flex-1 text-center md:text-left">
-          <div className="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-bold mb-6">
-            🚀 The #1 3D Printing Service in Malaysia
-          </div>
+
+      <div className="container mx-auto px-4 py-20 md:py-32 relative z-10">
+        <div className="flex flex-col md:flex-row items-center gap-16">
           
-          <h1 className="hero-title text-5xl md:text-6xl font-extrabold leading-tight mb-6 text-gray-900">
-            Materialize Your <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-              Imagination
-            </span>
-          </h1>
-          
-          <p className="hero-subtitle text-xl text-gray-500 mb-8 leading-relaxed max-w-lg mx-auto md:mx-0">
-            From rapid prototyping to end-use parts. We turn your CAD files into physical objects with industrial-grade precision.
-          </p>
-          
-          <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-12">
-            <Link to="/contact" className="btn btn-primary flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-500/30">
-              Start Printing <ArrowRight size={20} />
-            </Link>
+          {/* Left Content */}
+          <div className="flex-1 text-center md:text-left">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-50 to-pink-50 rounded-full border border-purple-200 mb-8">
+              <Zap className="w-4 h-4 text-purple-600" />
+              <span className="text-sm font-semibold text-purple-700">Trusted by 1000+ Creators</span>
+            </div>
             
-            <Link to="/services" className="btn btn-outline flex items-center justify-center gap-2 px-8 py-4 border border-gray-300 text-gray-700 rounded-lg hover:border-gray-800 transition-all">
-              <PlayCircle size={20} /> How It Works
-            </Link>
+            <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6 text-slate-900">
+              Transform Your
+              <br />
+              <span className="gradient-text">Ideas Into Reality</span>
+            </h1>
+            
+            <p className="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto md:mx-0">
+              Professional 3D printing services for prototypes, custom parts, and production runs. Fast, precise, and affordable solutions for every project.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center md:justify-start">
+              <Link to="/contact?type=quote" className="btn-primary inline-flex items-center justify-center gap-2">
+                Get Free Quote <ArrowRight className="w-5 h-5" />
+              </Link>
+              
+              <Link to="/services" className="btn-secondary inline-flex items-center justify-center gap-2">
+                Explore Services
+              </Link>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-8 pt-8 border-t border-slate-200">
+              <div>
+                <div className="text-3xl font-bold text-slate-900">500+</div>
+                <p className="text-sm text-slate-600 mt-1">Projects Completed</p>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-slate-900">48hr</div>
+                <p className="text-sm text-slate-600 mt-1">Average Turnaround</p>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-slate-900">99%</div>
+                <p className="text-sm text-slate-600 mt-1">Customer Satisfaction</p>
+              </div>
+            </div>
           </div>
 
-          {/* Stats Section - 看起来比较有信服力 */}
-          <div className="hero-stats grid grid-cols-3 gap-6 border-t pt-8 border-gray-100">
-            <div className="stat">
-              <h3 className="text-3xl font-bold text-gray-900">5k+</h3>
-              <p className="text-sm text-gray-500 flex items-center gap-1 mt-1">
-                <Layers size={14}/> Projects
-              </p>
-            </div>
-            <div className="stat">
-              <h3 className="text-3xl font-bold text-gray-900">98%</h3>
-              <p className="text-sm text-gray-500 flex items-center gap-1 mt-1">
-                <Smile size={14}/> Happy Clients
-              </p>
-            </div>
-            <div className="stat">
-              <h3 className="text-3xl font-bold text-gray-900">24h</h3>
-              <p className="text-sm text-gray-500 flex items-center gap-1 mt-1">
-                <Clock size={14}/> Turnaround
-              </p>
+          {/* Right Visual */}
+          <div className="flex-1 relative h-96 md:h-full">
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-500 rounded-3xl opacity-10"></div>
+            <div className="relative w-full h-full flex items-center justify-center">
+              <div className="w-full max-w-sm aspect-square bg-gradient-to-br from-purple-400 via-pink-400 to-red-400 rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+                <div className="text-6xl">🖨️</div>
+              </div>
             </div>
           </div>
-        </div>
-
-        {/* Right Content: The Visual */}
-        <div className="hero-image flex-1 relative">
-            {/* Bro, 这里的 CSS illustration 真的要换掉。
-               去 Unsplash 找一张 "3d printing nozzle" 的特写，或者 "futuristic product design"。
-               下面我放了一个 Placeholder image 先。
-            */}
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl transform md:rotate-3 hover:rotate-0 transition-all duration-500">
-                <img 
-                    src="https://images.unsplash.com/photo-1631541909061-71e349d1f203?q=80&w=1000&auto=format&fit=crop" 
-                    alt="High Tech 3D Printer" 
-                    className="w-full h-auto object-cover"
-                />
-                
-                {/* 加上一个 Glassmorphism 的 Card 看起来更 Atas */}
-                <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-4 rounded-xl shadow-lg border border-white/50">
-                    <div className="flex items-center justify-between">
-                        <div>
-                            <p className="text-xs text-gray-500 uppercase tracking-wider">Status</p>
-                            <p className="text-green-600 font-bold flex items-center gap-2">
-                                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                                Printing Active
-                            </p>
-                        </div>
-                        <div className="text-right">
-                            <p className="text-xs text-gray-500 uppercase tracking-wider">Precision</p>
-                            <p className="text-gray-900 font-bold">0.05 mm</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
       </div>
     </section>

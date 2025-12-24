@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Services() {
   const materialsData = [
@@ -71,82 +72,89 @@ function Services() {
   ]
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 font-sans">
+    <div className="min-h-screen bg-white font-sans">
       
-      {/* 1. Services Hero Section */}
-      {/* 对应 CSS: .services-hero -> bg-gradient, padding 5rem */}
-      <section className="relative py-20 px-5 text-center bg-gradient-to-br from-sky-900/40 to-slate-900 border-b border-slate-800">
-        <div className="max-w-4xl mx-auto z-10 relative">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-sky-400 to-cyan-300 bg-clip-text text-transparent">
-            Material Guide
-          </h1>
-          <p className="text-slate-400 text-xl opacity-90 max-w-2xl mx-auto">
-            Not sure what to choose? Here is a breakdown of our materials.
-          </p>
+      {/* Hero Section */}
+      <section className="relative py-20 md:py-32 px-4 overflow-hidden section-light">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-purple-400 to-transparent rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-pink-400 to-transparent rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+        </div>
+        
+        <div className="container mx-auto max-w-4xl relative z-10">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-6">
+              Materials <span className="gradient-text">Guide</span>
+            </h1>
+            <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+              Not sure which material is right for your project? Here's everything you need to know about our available 3D printing materials.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* 2. Services Content */}
-      <section className="py-20 px-5">
+      {/* Materials Content */}
+      <section className="py-20 md:py-32 px-4">
         <div className="container mx-auto max-w-5xl">
-          <div className="grid gap-8"> {/* .services-list -> gap: 2rem */}
-            
+          <div className="space-y-8">
             {materialsData.map((item) => (
               <div 
                 key={item.id} 
-                // 对应 CSS: .service-item
-                // grid-template-columns: 120px 1fr (在 md 以上生效)
-                // border-left: 4px solid ...
-                // transition: transform translateX
-                className="group relative bg-slate-800/50 border border-slate-700 rounded-xl p-8 
-                           grid grid-cols-1 md:grid-cols-[120px_1fr] gap-8 items-start
-                           border-l-4 border-l-sky-500
-                           transition-all duration-300 hover:translate-x-2 hover:shadow-2xl hover:shadow-sky-500/10"
+                className="card group bg-white border-l-4 border-l-purple-500 hover:border-l-pink-500 transition-all duration-300 hover:shadow-2xl"
               >
-                
-                {/* Icon Section (.service-icon) */}
-                <div className="text-6xl flex items-center justify-center h-full md:border-r md:border-slate-700 md:pr-8">
-                  {item.icon}
-                </div>
-
-                {/* Details Section (.service-details) */}
-                <div className="flex flex-col">
-                  <div className="flex flex-wrap items-center gap-3 mb-2">
-                    <h3 className="text-2xl font-bold text-white group-hover:text-sky-400 transition-colors">
-                      {item.title}
-                    </h3>
-                    <span className="text-xs font-semibold px-2 py-1 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20">
-                      {item.subtitle}
-                    </span>
+                <div className="grid grid-cols-1 md:grid-cols-[100px_1fr] gap-6 md:gap-8">
+                  
+                  {/* Icon */}
+                  <div className="text-5xl md:text-6xl flex items-center justify-center">
+                    {item.icon}
                   </div>
 
-                  <p className="text-slate-400 mb-6 leading-relaxed">
-                    {item.description}
-                  </p>
+                  {/* Content */}
+                  <div>
+                    <div className="flex flex-wrap items-center gap-3 mb-4">
+                      <h3 className="text-2xl md:text-3xl font-bold text-slate-900">
+                        {item.title}
+                      </h3>
+                      <span className="text-xs font-bold px-3 py-1 rounded-full bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700">
+                        {item.subtitle}
+                      </span>
+                    </div>
 
-                  <div className="mb-6 p-4 bg-slate-900/60 rounded-lg border border-slate-700/50">
-                    <span className="text-xs uppercase tracking-wider text-slate-500 font-bold block mb-1">Best For</span>
-                    <span className="text-sm text-slate-300 italic">{item.bestFor}</span>
+                    <p className="text-slate-600 mb-6 leading-relaxed text-lg">
+                      {item.description}
+                    </p>
+
+                    <div className="mb-6 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                      <span className="text-xs uppercase tracking-wider text-slate-500 font-bold block mb-2">Best For</span>
+                      <span className="text-slate-700 font-medium">{item.bestFor}</span>
+                    </div>
+
+                    {/* Features */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {item.pros.map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-2 text-slate-700">
+                          <span className="text-green-500 font-bold mt-1">✓</span>
+                          <span className="text-sm">{feature}</span>
+                        </div>
+                      ))}
+                      <div className="flex items-start gap-2 text-slate-700 sm:col-span-2">
+                        <span className="text-orange-500 font-bold mt-1">⚠️</span>
+                        <span className="text-sm">{item.cons}</span>
+                      </div>
+                    </div>
                   </div>
-
-                  {/* Features List (.service-features) */}
-                  {/* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) */}
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
-                    {item.pros.map((feature, idx) => (
-                      <li key={idx} className="flex items-start text-sm text-slate-300 font-medium">
-                        <span className="text-emerald-400 mr-2 mt-0.5">✓</span>
-                        {feature}
-                      </li>
-                    ))}
-                    <li className="flex items-start text-sm text-red-400 font-medium">
-                      <span className="mr-2 mt-0.5">⚠️</span>
-                      {item.cons}
-                    </li>
-                  </ul>
                 </div>
-
               </div>
             ))}
+          </div>
+
+          {/* CTA Section */}
+          <div className="mt-20 p-8 md:p-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl text-center">
+            <h3 className="text-3xl font-bold text-white mb-4">Ready to Get Started?</h3>
+            <p className="text-white/90 mb-8 text-lg">Get a free quote and material recommendation from our experts</p>
+            <Link to="/contact?type=quote" className="btn-primary">
+              Get Free Quote Now
+            </Link>
           </div>
         </div>
       </section>
