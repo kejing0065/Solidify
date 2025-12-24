@@ -1,7 +1,19 @@
-import React, { useState } from 'react'
-import { FaInstagram, FaEnvelope, FaClock, FaMapMarkerAlt } from 'react-icons/fa' // 加多几个 icon 比较美
+import React, { useState, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
+import { FaInstagram, FaEnvelope, FaClock, FaMapMarkerAlt, FaFile } from 'react-icons/fa'
+import { sendContactEmail, initializeEmailJS } from '../services/emailService'
 
 function Contact() {
+  const [searchParams] = useSearchParams()
+  const isQuoteRequest = searchParams.get('type') === 'quote'
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    // Initialize EmailJS when component mounts
+    initializeEmailJS()
+  }, [])
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -9,36 +21,69 @@ function Contact() {
     phone: '',
     subject: '',
     message: '',
-    projectType: 'prototyping'
+    projectType: 'prototyping',
+    requestType: isQuoteRequest ? 'quote' : 'inquiry',
+    file: null
   })
 
   const [submitted, setSubmitted] = useState(false)
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }))
+    const { name, value, type, files } = e.target
+    if (type === 'file') {
+      setFormData(prev => ({
+        ...prev,
+        [name]: files ? files[0] : null
+      }))
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }))
+    }
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // 这里以后可以接 EmailJS，现在先 console.log
-    console.log('Form submitted:', formData)
-    setSubmitted(true)
-    setTimeout(() => {
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        phone: '',
-        subject: '',
-        message: '',
-        projectType: 'prototyping'
+    setIsLoading(true)
+    setError('')
+
+    // Validate form
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      setError('Please fill in all required fields')
+      setIsLoading(false)
+      return
+    }
+
+    // Send email
+    sendContactEmail(formData)
+      .then(() => {
+        console.log('Form submitted:', formData)
+        if (formData.file) {
+          console.log('File attached:', formData.file.name)
+        }
+        setSubmitted(true)
+        setTimeout(() => {
+          setFormData({
+            name: '',
+            email: '',
+            company: '',
+            phone: '',
+            subject: '',
+            message: '',
+            projectType: 'prototyping',
+            requestType: isQuoteRequest ? 'quote' : 'inquiry',
+            file: null
+          })
+          setSubmitted(false)
+          setIsLoading(false)
+        }, 3000)
       })
-      setSubmitted(false)
-    }, 3000)
+      .catch((err) => {
+        console.error('Error sending email:', err)
+        setError('Failed to send message. Please try again or contact us directly.')
+        setIsLoading(false)
+      })
   }
 
   // Input 的共用样式，不用一直重写
@@ -52,10 +97,12 @@ function Contact() {
       <section className="relative py-20 px-5 text-center bg-gradient-to-b from-slate-800 to-slate-900 border-b border-slate-800">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-sky-400 to-cyan-300 bg-clip-text text-transparent">
-            Get In Touch
+            {isQuoteRequest ? 'Request A Quote' : 'Get In Touch'}
           </h1>
           <p className="text-slate-400 text-lg">
-            Have a project in mind? Let's talk about how we can help.
+            {isQuoteRequest 
+              ? 'Tell us about your project and get a free quote within 24 hours.' 
+              : 'Have a project in mind? Let\'s talk about how we can help.'}
           </p>
         </div>
       </section>
@@ -129,6 +176,11 @@ function Contact() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {error && (
+                    <div className="bg-red-500/20 border border-red-500/50 text-red-300 px-4 py-3 rounded-lg">
+                      {error}
+                    </div>
+                  )}
                   <div>
                     <label htmlFor="name" className={labelClass}>Full Name *</label>
                     <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required className={inputClass} placeholder="John Doe" />
@@ -171,8 +223,24 @@ function Contact() {
                     <textarea id="message" name="message" rows="5" value={formData.message} onChange={handleChange} required className={`${inputClass} resize-none`} placeholder="Tell us about your project..."></textarea>
                   </div>
 
-                  <button type="submit" className="w-full bg-sky-500 hover:bg-sky-400 text-white font-bold py-4 rounded-lg transition-all shadow-[0_0_20px_rgba(14,165,233,0.4)] hover:shadow-[0_0_30px_rgba(14,165,233,0.6)] hover:-translate-y-1">
-                    Send Message
+                  {isQuoteRequest && (
+                    <div>
+                      <label htmlFor="file" className={labelClass}>Upload 3D Model (Optional)</label>
+                      <div className="relative">
+                        <input type="file" id="file" name="file" onChange={handleChange} accept=".stl,.obj,.step,.iges,.fbx,.gltf" className="hidden" />
+                        <label htmlFor="file" className={`${inputClass} flex items-center gap-3 cursor-pointer hover:border-sky-400 transition-colors`}>
+                          <FaFile className="text-sky-400" />
+                          <span className="text-slate-400">
+                            {formData.file ? formData.file.name : 'Choose 3D model file (STL, OBJ, STEP, etc.)'}
+                          </span>
+                        </label>
+                      </div>
+                      <p className="text-xs text-slate-500 mt-2">Supported formats: STL, OBJ, STEP, IGES, FBX, GLTF</p>
+                    </div>
+                  )}
+
+                  <button type="submit" className="w-full bg-sky-500 hover:bg-sky-400 text-white font-bold py-4 rounded-lg transition-all shadow-[0_0_20px_rgba(14,165,233,0.4)] hover:shadow-[0_0_30px_rgba(14,165,233,0.6)] hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed" disabled={isLoading}>
+                    {isLoading ? 'Sending...' : isQuoteRequest ? 'Request Quote' : 'Send Message'}
                   </button>
                 </form>
               )}

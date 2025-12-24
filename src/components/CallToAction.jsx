@@ -27,7 +27,7 @@ function CallToAction() {
           {/* STOP DOING THIS: <Link><button>...</button></Link> */}
           {/* DO THIS: Style the Link explicitly as a button */}
           
-          <Link to="/contact" className="btn btn-primary">
+          <Link to="/contact?type=quote" className="btn btn-primary">
             Get A Free Quote 🚀
           </Link>
           
