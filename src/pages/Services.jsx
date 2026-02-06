@@ -4,17 +4,6 @@ import { Link } from 'react-router-dom'
 function Services() {
   const materialsData = [
     {
-      id: 1,
-      icon: '🌱',
-      title: 'PLA (Standard)',
-      subtitle: 'The Budget-Friendly Choice',
-      description: 'The most popular material for general 3D printing. It is biodegradable, easy to print, and great for models that don\'t need to withstand high heat.',
-      bestFor: 'Decorative items, toys, basic prototypes, architectural models.',
-      pros: ['Most affordable option', 'Huge variety of colors', 'High detail precision', 'Eco-friendly (Corn-based)'],
-      cons: 'Low heat resistance (deforms at 60°C)',
-      difficulty: 'Low'
-    },
-    {
       id: 2,
       icon: '💪',
       title: 'PETG (Durable)',
@@ -25,6 +14,19 @@ function Services() {
       cons: 'Slightly stringy surface finish',
       difficulty: 'Medium'
     },
+    
+    {
+      id: 1,
+      icon: '🌱',
+      title: 'PLA (Standard)',
+      subtitle: 'The Budget-Friendly Choice',
+      description: 'The most popular material for general 3D printing. It is biodegradable, easy to print, and great for models that don\'t need to withstand high heat.',
+      bestFor: 'Decorative items, toys, basic prototypes, architectural models.',
+      pros: ['Most affordable option', 'Huge variety of colors', 'High detail precision', 'Eco-friendly (Corn-based)'],
+      cons: 'Low heat resistance (deforms at 60°C)',
+      difficulty: 'Low'
+    },
+
     // {
     //   id: 3,
     //   icon: '🧱',

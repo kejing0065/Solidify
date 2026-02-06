@@ -44,9 +44,9 @@ function Navbar() {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
           <Link to="/" className={getLinkClass('/')}>Home</Link>
+          <Link to="/product" className={getLinkClass('/product')}>Product</Link>
           <Link to="/services" className={getLinkClass('/services')}>Services</Link>
           <Link to="/portfolio" className={getLinkClass('/portfolio')}>Portfolio</Link>
-          <Link to="/product" className={getLinkClass('/product')}>Product</Link>
           <Link to="/contact" className={getLinkClass('/contact')}>Contact</Link>
           
           <Link to="/contact?type=quote" className="btn-primary">

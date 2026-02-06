@@ -6,7 +6,7 @@ import logoImg from '../../logo.jpeg'
 function Footer() {
   return (
     <footer className="bg-gradient-to-b from-slate-900 to-slate-950 border-t border-slate-800 pt-20 pb-8 text-slate-400 font-sans">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
         
         {/* Top Section: Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">

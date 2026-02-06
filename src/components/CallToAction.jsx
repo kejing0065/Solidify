@@ -4,7 +4,7 @@ import '../styles/cta.css'
 
 function CallToAction() {
   return (
-    <section className="relative py-20 md:py-32 overflow-hidden">
+    <section className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-b from-purple-600 to-slate-900">
       {/* Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-600 to-red-500 opacity-90"></div>
       

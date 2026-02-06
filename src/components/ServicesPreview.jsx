@@ -31,7 +31,7 @@ function ServicesPreview() {
   ]
 
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-20 md:py-32 px-4 bg-gradient-to-b from-slate-50 to-white">
       <div className="container mx-auto max-w-6xl">
         
         {/* Header Section */}

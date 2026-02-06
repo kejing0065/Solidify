@@ -27,7 +27,7 @@ function Testimonials() {
   ]
 
   return (
-    <section className="testimonials">
+    <section className="testimonials bg-gradient-to-b from-white to-slate-50 py-20 md:py-32">
       <div className="container">
         <h2 className="section-title">What Our Clients Say</h2>
         <p className="section-subtitle">

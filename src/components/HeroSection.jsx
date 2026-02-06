@@ -5,14 +5,14 @@ import '../styles/hero.css'
 
 function HeroSection() {
   return (
-    <section className="hero relative overflow-hidden bg-white">
+    <section className="hero relative overflow-hidden section-light">
       {/* Animated Background Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-purple-400 to-transparent rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-pink-400 to-transparent rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{animationDelay: '1s'}}></div>
       </div>
 
-      <div className="container mx-auto px-4 py-20 md:py-32 relative z-10">
+      <div className="container mx-auto px-4 py-0 md:py-0 relative z-10">
         <div className="flex flex-col md:flex-row items-center gap-16">
           
           {/* Left Content */}
