@@ -1,9 +1,9 @@
 [build]
-  command = "npm install && npm run build"
+  command = "npm ci && npx vite build"
   publish = "dist"
 
 [context.production]
-  command = "npm install && npm run build"
+  command = "npm ci && npx vite build"
 
 [[redirects]]
   from = "/*"
