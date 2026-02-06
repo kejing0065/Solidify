@@ -46,6 +46,7 @@ function Navbar() {
           <Link to="/" className={getLinkClass('/')}>Home</Link>
           <Link to="/services" className={getLinkClass('/services')}>Services</Link>
           <Link to="/portfolio" className={getLinkClass('/portfolio')}>Portfolio</Link>
+          <Link to="/product" className={getLinkClass('/product')}>Product</Link>
           <Link to="/contact" className={getLinkClass('/contact')}>Contact</Link>
           
           <Link to="/contact?type=quote" className="btn-primary">
@@ -61,6 +62,7 @@ function Navbar() {
           <Link to="/" className="font-semibold text-slate-900 hover:text-purple-600" onClick={closeMenu}>Home</Link>
           <Link to="/services" className="font-semibold text-slate-900 hover:text-purple-600" onClick={closeMenu}>Services</Link>
           <Link to="/portfolio" className="font-semibold text-slate-900 hover:text-purple-600" onClick={closeMenu}>Portfolio</Link>
+          <Link to="/product" className="font-semibold text-slate-900 hover:text-purple-600" onClick={closeMenu}>Product</Link>
           <Link to="/contact" className="font-semibold text-slate-900 hover:text-purple-600" onClick={closeMenu}>Contact</Link>
           <Link to="/contact?type=quote" className="btn-primary w-full text-center" onClick={closeMenu}>
             Get Free Quote
