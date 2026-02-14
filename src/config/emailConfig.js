@@ -3,9 +3,9 @@
 
 export const emailJSConfig = {
   // Replace these with your actual EmailJS credentials
-  SERVICE_ID: 'service_xxxxx', // Your EmailJS Service ID
-  TEMPLATE_ID: 'template_xxxxx', // Your EmailJS Template ID
-  PUBLIC_KEY: 'xxxxx', // Your EmailJS Public Key
+  SERVICE_ID: 'service_q87ybho', // Your EmailJS Service ID
+  TEMPLATE_ID: 'template_l3aejqe', // Your EmailJS Template ID
+  PUBLIC_KEY: '3uPrN2I-mDTBOQkxX', // Your EmailJS Public Key
 };
 
 export const initEmailJS = () => {
